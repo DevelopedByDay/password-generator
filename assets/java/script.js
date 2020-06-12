@@ -1,12 +1,14 @@
 
-var pass = "";
 
+// function to choose password length 
 complexF = function() {
-  var complexity = window.prompt("Please choose a password lenght of 8 t0 128 characters by typing in the desired number here.");
+  var complexity = "0"
+  complexity = window.prompt("Please choose a password lenght of 8 to 128 characters by typing in the desired number here.");
   
-  if (parseInt(complexity) < 8 || parseInt(complexity) > 128 ){
+  // force user to select number within bounds
+  if (parseInt(complexity) < 8 || parseInt(complexity) > 128 || complexity === "0" || complexity === null) {
     window.alert("That is not within the range of 8 - 128. Please try again");
-    complexF();
+    complexF()
   }
   else {
     console.log(complexity)
@@ -17,10 +19,12 @@ complexF = function() {
 
 // generation and prompt function
 generatePassword = function() {
+  var pass = "";
   
   // set password lenght/comlexity
   var length = complexF();
   
+  // makes up for extra integer from string and turns into number
   length = parseInt(length) - 1;
   
 
@@ -29,13 +33,15 @@ generatePassword = function() {
   var ucharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var ncharset = "0123456789";
   var scharset = "!@#$%^&*?/<>+_-=";
-  var charseta = ""
+  var charseta = "";
 
-  var confirmL = window.confirm("Do you want lower case letters in your password?")
-  var confirmU = window.confirm("Do you want upper case letters in your password?")
-  var confirmN = window.confirm("Do you want number in your password?")
-  var confirmS = window.confirm("Do you want symobls in your password?")
+  var confirmL = window.confirm("Do you want lower case letters in your password?");
+  var confirmU = window.confirm("Do you want UPPER case letters in your password?");
+  var confirmN = window.confirm("Do you want numbers in your password?");
+  var confirmS = window.confirm("Do you want symobls in your password?");
 
+
+  //generate character list based on selection
   if (confirmL) {
     charseta = charseta + lcharset;
   }
@@ -50,15 +56,13 @@ generatePassword = function() {
   if (confirmS) {
     charseta = charseta + scharset;
   }
-  console.log(charseta)
   
 
   for(var i = 0; i <= length; i++) {
     pass = pass + charseta.charAt(Math.floor(Math.random() * Math.floor(charseta.length - 1)));
-
-    console.log(pass);
   }
-    return pass; 
+    console.log(pass)
+    return pass
 }   
 
 
