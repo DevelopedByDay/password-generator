@@ -29,22 +29,39 @@ generatePassword = function() {
   var ucharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var ncharset = "0123456789";
   var scharset = "!@#$%^&*?/<>+_-=";
-  var charseta = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*?/<>+_-="
+  var charseta = ""
 
   var confirmL = window.confirm("Do you want lower case letters in your password?")
   var confirmU = window.confirm("Do you want upper case letters in your password?")
   var confirmN = window.confirm("Do you want number in your password?")
   var confirmS = window.confirm("Do you want symobls in your password?")
 
-  if (confirmL, confirmU, confirmN, confirmS) {
-    for(var i = 0; i <= length; i++) {
-      pass = pass + charseta.charAt(Math.floor(Math.random() * Math.floor(charseta.length - 1)));
-
-      console.log(pass);
-      return pass;
-    }
+  if (confirmL) {
+    charseta = charseta + lcharset;
   }
-}
+  if (confirmN) {
+    charseta = charseta + ncharset;
+  }
+
+  if (confirmU) {
+    charseta = charseta + ucharset;
+  }
+
+  if (confirmS) {
+    charseta = charseta + scharset;
+  }
+  console.log(charseta)
+  
+
+  for(var i = 0; i <= length; i++) {
+    pass = pass + charseta.charAt(Math.floor(Math.random() * Math.floor(charseta.length - 1)));
+
+    console.log(pass);
+  }
+    return pass; 
+}   
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
