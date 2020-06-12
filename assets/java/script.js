@@ -8,13 +8,12 @@ complexF = function() {
   // force user to select number within bounds
   if (parseInt(complexity) < 8 || parseInt(complexity) > 128 || complexity === "0" || complexity === null) {
     window.alert("That is not within the range of 8 - 128. Please try again");
-    complexF()
+    return complexF()
   }
   else {
     console.log(complexity)
     return complexity
   }
-  
 }
 
 // generation and prompt function
