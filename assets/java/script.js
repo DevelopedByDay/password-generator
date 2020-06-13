@@ -11,6 +11,7 @@ complexF = function() {
     return complexF()
   }
   else {
+    //confirm length
     console.log(complexity)
     return complexity
   }
@@ -55,11 +56,14 @@ generatePassword = function() {
   if (confirmS) {
     charseta = charseta + scharset;
   }
-  
+  // confirm character list
+  console.log(charseta)
+
 
   for(var i = 0; i <= length; i++) {
     pass = pass + charseta.charAt(Math.floor(Math.random() * Math.floor(charseta.length - 1)));
   }
+    // confirm password 
     console.log(pass)
     return pass
 }   
