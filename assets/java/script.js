@@ -17,17 +17,8 @@ complexF = function() {
   }
 }
 
-// generation and prompt function
-generatePassword = function() {
-  var pass = "";
-  
-  // set password lenght/comlexity
-  var length = complexF();
-  
-  // makes up for extra integer from string and turns into number
-  length = parseInt(length) - 1;
-  
-
+// function allows for forcing users to choose at least one set of values
+confirmer = function() {
   // possible password values and selectors for those values
   var lcharset = "abcdefghijklmnopqrstuvwxyz";
   var ucharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -56,12 +47,33 @@ generatePassword = function() {
   if (confirmS) {
     charseta = charseta + scharset;
   }
+  if (charseta === "") {
+    window.alert("Please select at least one set of characters.")
+    return confirmer()
+  }
+  return charseta
+}
+
+// generation and prompt function
+generatePassword = function() {
+  var pass = "";
+  
+  // set password lenght/comlexity
+  var length = complexF();
+  
+  // makes up for extra integer from string and turns into number
+  length = parseInt(length) - 1;
+  
+  // captures value from user input
+  charset = confirmer()
+  
+  
   // confirm character list
-  console.log(charseta)
+  console.log(charset)
 
 
   for(var i = 0; i <= length; i++) {
-    pass = pass + charseta.charAt(Math.floor(Math.random() * Math.floor(charseta.length - 1)));
+    pass = pass + charset.charAt(Math.floor(Math.random() * Math.floor(charset.length - 1)));
   }
     // confirm password 
     console.log(pass)
